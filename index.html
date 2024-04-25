@@ -1,1 +1,22 @@
-1234
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display GitHub content</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div id="github-content"></div>
+  <script>
+    $.ajax({
+      url: '/proxy?url=https://raw.githubusercontent.com/DevJeb/devjeb.github.io/main/index.html',
+      dataType: 'html',
+      success: function(data) {
+        $('#github-content').html(data);
+      },
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
