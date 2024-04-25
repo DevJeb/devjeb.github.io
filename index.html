@@ -8,15 +8,15 @@
   <div id="github-content"></div>
   <script>
     $.ajax({
-      url: '/proxy?url=https://raw.githubusercontent.com/DevJeb/hashing/main/info.txt',
-      dataType: 'html',
-      success: function(data) {
-        $('#github-content').html(data);
-      },
-      error: function(xhr, status, error) {
-        console.error(error);
-      }
-    });
+  url: 'https://raw.githubusercontent.com/DevJeb/hashing/main/info.txt',
+  success: function(data) {
+    $('#file-content').text(data);
+  },
+  error: function() {
+    $('#file-content').text('Error: File not found.');
+  }
+});
   </script>
+  <div id="file-content"></div>
 </body>
 </html>
