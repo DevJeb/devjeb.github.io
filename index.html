@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DevJeb</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-  <div id="github-content"></div>
-  <script>
-    $.ajax({
-  url: 'https://devjeb.ru/db.json',
-  success: function(data) {
-    $('#file-content').text(data);
-  },
-  error: function() {
-    $('#file-content').text('Error: File not found.');
-  }
-});
-  </script>
-  <div id="file-content"></div>
-</body>
+  <head>
+    <title>DevJeb</title>
+  </head>
+  <body>
+    <h1>Data from devjeb.ru/db.json:</h1>
+    <div id="data"></div>
+    <script>
+fetch('https://devjeb.ru/db.json')
+  .then(response => response.json())
+  .then(data => {
+    const dataDiv = document.getElementById('data');
+    dataDiv.textContent = JSON.stringify(data, null, 2);
+  })
+  .catch(error => console.error('Error fetching data:', error));
+    </script>
+  </body>
 </html>
